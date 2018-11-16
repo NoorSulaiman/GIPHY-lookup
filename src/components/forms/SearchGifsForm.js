@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Form, Button } from 'semantic-ui-react';
 import InlineError from '../messages/InlineError';
+import './SearchGifsForm.css'
 
 class SearchGifsForm extends React.Component {
     state = {
@@ -39,9 +40,9 @@ class SearchGifsForm extends React.Component {
     render() {
         const { data, errors, loading } = this.state;
         return (
-            <Form onSubmit={this.onSubmit} loading={loading} size="big">
+            <Form onSubmit={this.onSubmit} loading={loading}>
                 <Form.Group inline>
-                    <Form.Field error={!!errors.search}>
+                    <Form.Field id='formField' error={!!errors.search}>
                         <input
                             type="text"
                             id="search"
@@ -52,7 +53,7 @@ class SearchGifsForm extends React.Component {
                         />
                         {errors.search && <InlineError text={errors.search} />}
                     </Form.Field>
-                    <Button size="big">Search</Button>
+                    <Button>Search</Button>
                 </Form.Group>
             </Form>
         );
