@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Grid, Divider, Message, Card, Button, Icon, GridRow } from 'semantic-ui-react';
+import { Grid, Divider, Message, Card, Button, Icon } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { searchGifs, clearSearch } from '../../actions/search';
 import { addToFavorites, removeFromFavorites } from '../../actions/favorite';
 import SearchGifsForm from '../forms/SearchGifsForm';
-import GifCard from '../templates/GifCard';
+import SearchGifCard from '../templates/SearchGifCard';
 import './HomePage.css'
 
 class HomePage extends Component {
@@ -49,10 +49,10 @@ class HomePage extends Component {
                         </Button>
                     </Grid.Column>
                 </Grid.Row>}
-                <GridRow centered>
+                <Grid.Row centered>
                     <Card.Group stackable itemsPerRow={4}>
                         {results && results.map(gif =>
-                            <GifCard
+                            <SearchGifCard
                                 key={gif.id}
                                 id={gif.id}
                                 addToFavorites={this.addToFavorites}
@@ -63,7 +63,7 @@ class HomePage extends Component {
                     </Card.Group>
                     {results && results.length < 1 && <Message>No search result found!</Message>}
                     {errors && <Message negative>{errors}</Message>}
-                </GridRow>
+                </Grid.Row>
             </Grid>
         );
     }

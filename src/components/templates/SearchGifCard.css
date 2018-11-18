@@ -1,0 +1,56 @@
+#gifcard{
+    transition: transform .1s
+}
+#gifcard:hover{
+    transform: scale(1.2);
+    z-index: 1000;
+}
+#gifcard:hover #favIcon{
+    display: block;
+}
+#gifcard:hover #gifTitle{
+    display: block;
+}
+#gifcard:active {
+	transform: scale(1.15,1.15) translateY(2px)
+}
+#favIcon{
+    padding-top: 7px;	
+	padding-left: 7px;
+	position: absolute;
+	left: 0;
+	top: 0;
+    display: none;
+    color:rgb(224, 224, 224);
+}
+
+
+.favActive{
+    color:rgb(214, 214, 36) !important;
+}
+
+
+@media only screen and (max-width:786px){
+    img{
+        margin: 1%;
+    }
+    #gifcard{
+        transition: none
+    }
+    #gifcard:hover{
+        transform: none;
+        z-index: unset;
+    }
+    #gifcard:active {
+        transform: scale(0.9,0.9) translateY(2px)
+    }
+    #favIcon{
+        padding: 0;
+        position:unset;
+        margin: 0 auto;
+        display: block;
+        color:rgb(190, 185, 185);
+    }
+    
+
+}

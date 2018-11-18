@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { Card } from 'semantic-ui-react';
-import GifCardFavorite from '../templates/GifCardFavorite';
+import { removeFromFavorites } from '../../actions/favorite';
+import FavoritesGifCard from '../templates/FavoritesGifCard';
 
 class FavoritesPage extends Component {
     state = {}
@@ -10,13 +13,20 @@ class FavoritesPage extends Component {
         this.setState({ favorites })
     }
 
+    removeGif = (id) => {
+        this.props.removeFromFavorites(id)
+        this.componentWillMount()
+    }
+
     render() {
         const { favorites } = this.state;
         return (
             <Card.Group stackable itemsPerRow={4}>
                 {favorites && favorites.map(gif =>
-                    <GifCardFavorite
+                    <FavoritesGifCard
                         key={gif.id}
+                        id={gif.id}
+                        remove={this.removeGif}
                         title={gif.title}
                         imgUrl={gif.imgUrl} />
                 )}
@@ -26,9 +36,9 @@ class FavoritesPage extends Component {
 }
 
 FavoritesPage.propTypes = {
-
+    removeFromFavorites: PropTypes.func.isRequired
 }
 
 
 
-export default FavoritesPage;
+export default connect(null, { removeFromFavorites })(FavoritesPage);;

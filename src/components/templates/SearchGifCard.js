@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Card, Icon } from 'semantic-ui-react';
-import './GifCard.css'
+import './SearchGifCard.css'
 
 const GifCard = ({ title, imgUrl, addToFavorites, id }) => {
     const favorites = localStorage.getItem("favorites") ? JSON.parse(localStorage.getItem("favorites")) : [];
