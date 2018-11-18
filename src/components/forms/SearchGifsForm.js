@@ -6,7 +6,7 @@ import './SearchGifsForm.css'
 
 class SearchGifsForm extends React.Component {
     state = {
-        data: {},
+        data: { search: '' },
         loading: false,
         errors: {}
     };
@@ -23,17 +23,15 @@ class SearchGifsForm extends React.Component {
         this.setState({ errors });
         if (Object.keys(errors).length === 0) {
             this.setState({ loading: true });
-            this.props
-                .submit(this.state.data)
-                .catch(err =>
-                    this.setState({ errors: err.response.data.errors, loading: false })
-                );
+            this.props.submit(this.state.data.search).then(this.setState({
+                loading: false
+            }))
         }
     };
 
     validate = data => {
         const errors = {};
-        if (data.search.length === 0 || !data.search.trim()) errors.index = "Can't be blank"
+        if (data.search.length === 0 || !data.search.trim()) errors.search = "Can't be blank"
         return errors;
     };
 
@@ -51,10 +49,10 @@ class SearchGifsForm extends React.Component {
                             value={data.search}
                             onChange={this.onChange}
                         />
-                        {errors.search && <InlineError text={errors.search} />}
                     </Form.Field>
                     <Button>Search</Button>
                 </Form.Group>
+                {errors.search && <InlineError text={errors.search} />}
             </Form>
         );
     }

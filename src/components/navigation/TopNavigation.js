@@ -5,7 +5,7 @@ import './TopNavigation.css'
 
 const items = [
     { key: 'home', id: 'homeLink', name: 'Home', as: Link, to: "/" },
-    { key: 'favorite', id: 'favoriteLink', name: 'favorite', as: Link, to: "/favorite" },
+    { key: 'favorites', id: 'favoriteLink', name: 'favorites', as: Link, to: "/favorite" },
 ]
 
 const TopNavigation = () => <Menu size="big" inverted id="topNav" items={items} />
