@@ -1,44 +1,36 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Card } from 'semantic-ui-react';
 import { removeFromFavorites } from '../../actions/favorite';
 import FavoritesGifCard from '../templates/FavoritesGifCard';
 
-class FavoritesPage extends Component {
-    state = {}
-
-    componentWillMount() {
-        const favorites = JSON.parse(localStorage.getItem("favorites"));
-        this.setState({ favorites })
-    }
-
-    removeGif = (id) => {
-        this.props.removeFromFavorites(id)
-        this.componentWillMount()
-    }
-
-    render() {
-        const { favorites } = this.state;
-        return (
-            <Card.Group stackable itemsPerRow={4}>
-                {favorites && favorites.map(gif =>
-                    <FavoritesGifCard
-                        key={gif.id}
-                        id={gif.id}
-                        remove={this.removeGif}
-                        title={gif.title}
-                        imgUrl={gif.imgUrl} />
-                )}
-            </Card.Group>
-        );
-    }
-}
+const FavoritesPage = ({ favorites, removeFunc }) => (
+    <Card.Group stackable itemsPerRow={4}>
+        {favorites && Object.keys(favorites).map(id =>
+            <FavoritesGifCard
+                key={id}
+                id={id}
+                removeFunc={removeFunc}
+                title={favorites[id].title}
+                imgUrl={favorites[id].imgUrl} />
+        )}
+    </Card.Group>
+);
 
 FavoritesPage.propTypes = {
-    removeFromFavorites: PropTypes.func.isRequired
+    favorites: PropTypes.arrayOf(PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        id: PropTypes.string.isRequired,
+        imgUrl: PropTypes.string.isRequired,
+    }).isRequired).isRequired,
+    removeFunc: PropTypes.func.isRequired,
+};
+
+function mapStateToProps(state) {
+    return {
+        favorites: state.favorites,
+    };
 }
 
-
-
-export default connect(null, { removeFromFavorites })(FavoritesPage);;
+export default connect(mapStateToProps, { removeFunc: removeFromFavorites })(FavoritesPage);

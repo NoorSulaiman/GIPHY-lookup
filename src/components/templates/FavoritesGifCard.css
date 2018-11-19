@@ -9,9 +9,6 @@
     display: block;
 }
 
-#favgifcard:hover #downloadIcon{
-    display: block;
-}
 #deleteIcon:hover{
     background-color:rgb(46, 45, 45); 
 }
@@ -27,15 +24,11 @@
 #deleteIcon:hover #tooltipdelete{
     display: block;
 }
-#downloadIcon:hover #tooltipdownload{
-    display: block;
-}
+
 #deleteIcon:active #tooltipdelete{
     display: none;
 }
-#downloadIcon:active #tooltipdownload{
-    display: none;
-}
+
 
 
 #deleteIcon{
@@ -53,28 +46,14 @@
     margin:0 auto;
 }
 
-#downloadIcon{
-    padding: 3%;
-    margin: 2%;
-	position:absolute;
-	left: 0;
-	top: 0;
-    display: none;
-    color: white;
-    background-color: rgba(107, 102, 102, 0.52);
-    border-radius: 50%;
-}
-#downIcon{
-    margin:0 auto;
-}
 
-#tooltipdelete,#tooltipdownload {
+
+#tooltipdelete{
     display: none;
     width: 80px;
     background-color: black;
     color: #fff;
     text-align: center;
-   
     border-radius: 6px;
     position: absolute;
     z-index: 110;

@@ -3,17 +3,15 @@ import PropTypes from 'prop-types';
 import { Card, Icon } from 'semantic-ui-react';
 import './FavoritesGifCard.css';
 
-const FavoritesGifCard = ({ title, imgUrl, id, remove }) => (
+const FavoritesGifCard = ({ title, imgUrl, id, removeFunc }) => (
     <Card id='favgifcard'>
-        <img alt="cardImages" src={imgUrl} />
-        {<Icon as='div' link id='deleteIcon' onClick={() => remove(id)}>
+        <img alt="gifImage" src={imgUrl} />
+        {/* todo: switch to button */}
+        <Icon as='a' id='deleteIcon' onClick={() => removeFunc(id)}>
             <Icon size='large' name='close' id='delIcon' />
             <span id="tooltipdelete">Delete!</span>
-        </Icon>}
-        {<Icon as='a' link id='downloadIcon' href={imgUrl}>
-            <Icon size='large' name='arrow down' id='downIcon' />
-            <span id="tooltipdownload">Download!</span>
-        </Icon>}
+        </Icon>
+
         <Card.Content>
             <Card.Header>{title}</Card.Header>
         </Card.Content>
@@ -23,7 +21,9 @@ const FavoritesGifCard = ({ title, imgUrl, id, remove }) => (
 
 FavoritesGifCard.propTypes = {
     title: PropTypes.string.isRequired,
-    imgUrl: PropTypes.string.isRequired
+    imgUrl: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
+    removeFunc: PropTypes.func.isRequired
 }
 
 export default FavoritesGifCard;

@@ -8,13 +8,13 @@ class SearchGifsForm extends React.Component {
     state = {
         data: { search: '' },
         loading: false,
-        errors: {}
+        errors: {},
     };
 
     onChange = e =>
         this.setState({
             ...this.state,
-            data: { ...this.state.data, [e.target.name]: e.target.value }
+            data: { ...this.state.data, [e.target.name]: e.target.value },
         });
 
     onSubmit = e => {
@@ -24,14 +24,16 @@ class SearchGifsForm extends React.Component {
         if (Object.keys(errors).length === 0) {
             this.setState({ loading: true });
             this.props.submit(this.state.data.search).then(this.setState({
-                loading: false
-            }))
+                loading: false,
+            }));
         }
     };
 
     validate = data => {
         const errors = {};
-        if (data.search.length === 0 || !data.search.trim()) errors.search = "Can't be blank"
+        if (data.search.length === 0 || !data.search.trim()) {
+            errors.search = "Can't be blank";
+        }
         return errors;
     };
 
@@ -58,7 +60,7 @@ class SearchGifsForm extends React.Component {
     }
 };
 SearchGifsForm.propTypes = {
-    submit: PropTypes.func.isRequired
+    submit: PropTypes.func.isRequired,
 };
 
 export default SearchGifsForm;
