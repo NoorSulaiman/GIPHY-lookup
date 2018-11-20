@@ -40,7 +40,7 @@ class SearchGifsForm extends React.Component {
     render() {
         const { data, errors, loading } = this.state;
         return (
-            <Form onSubmit={this.onSubmit} loading={loading}>
+            <Form id='searchForm' onSubmit={this.onSubmit} loading={loading}>
                 <Form.Group inline>
                     <Form.Field id='formField' error={!!errors.search}>
                         <input
@@ -52,7 +52,7 @@ class SearchGifsForm extends React.Component {
                             onChange={this.onChange}
                         />
                     </Form.Field>
-                    <Button>Search</Button>
+                    <Button id='searchButton'>Search</Button>
                 </Form.Group>
                 {errors.search && <InlineError text={errors.search} />}
             </Form>

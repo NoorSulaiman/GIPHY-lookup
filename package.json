@@ -2,9 +2,12 @@
   "name": "stash-code-challenge",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "v10.12.0",
+    "npm": "6.4.1"
+  },
   "dependencies": {
     "axios": "^0.18.0",
-    "download-file": "^0.1.5",
     "prop-types": "^15.6.2",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
@@ -28,6 +31,11 @@
   "eslintConfig": {
     "extends": "react-app"
   },
+  "jest": {
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ]
+  },
   "browserslist": [
     ">0.2%",
     "not dead",
@@ -35,12 +43,17 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "enzyme": "^3.7.0",
+    "enzyme-adapter-react-16": "^1.7.0",
+    "enzyme-to-json": "^3.3.4",
     "eslint-config-airbnb": "^15.1.0",
     "eslint-config-prettier": "^3.3.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^5.1.1",
     "eslint-plugin-prettier": "^3.0.0",
     "eslint-plugin-react": "^7.11.1",
-    "prettier": "^1.15.2"
+    "fetch-mock": "^7.2.5",
+    "prettier": "^1.15.2",
+    "redux-mock-store": "^1.5.3"
   }
 }

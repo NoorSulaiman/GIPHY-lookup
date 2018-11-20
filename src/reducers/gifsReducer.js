@@ -4,7 +4,6 @@ const favorites = localStorage.getItem("favorites") ? JSON.parse(localStorage.ge
 
 export default function gifsReducer(state = { favorites, search: { searchResult: [], searchError: ' ' } }, action = {}) {
     const finalSearchResults = [];
-
     switch (action.type) {
         case USER_SEARCHED:
             if (typeof (action.response) === 'object') {
@@ -18,7 +17,7 @@ export default function gifsReducer(state = { favorites, search: { searchResult:
                 return { ...state, search: { searchResult: [], searchError: action.response } };
 
             } else if (action.response.length === 0) {
-                return { ...state, search: { searchResult: [], searchError: "No" } };
+                return { ...state, search: { searchResult: [], searchError: "No results" } };
             }
             return { ...state, search: { searchResult: finalSearchResults, searchError: ' ' } };
 

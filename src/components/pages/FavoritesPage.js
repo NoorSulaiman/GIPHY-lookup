@@ -5,7 +5,7 @@ import { Card } from 'semantic-ui-react';
 import { removeFromFavorites } from '../../actions/favorite';
 import FavoritesGifCard from '../templates/FavoritesGifCard';
 
-const FavoritesPage = ({ favorites, removeFunc }) => (
+export const FavoritesPage = ({ favorites, removeFunc }) => (
     <Card.Group stackable itemsPerRow={4}>
         {favorites && Object.keys(favorites).map(id =>
             <FavoritesGifCard
@@ -19,7 +19,7 @@ const FavoritesPage = ({ favorites, removeFunc }) => (
 );
 
 FavoritesPage.propTypes = {
-    favorites: PropTypes.arrayOf(PropTypes.shape({
+    favorites: PropTypes.objectOf(PropTypes.shape({
         title: PropTypes.string.isRequired,
         id: PropTypes.string.isRequired,
         imgUrl: PropTypes.string.isRequired,

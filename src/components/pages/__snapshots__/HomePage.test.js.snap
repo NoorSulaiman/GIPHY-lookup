@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render HomePage correctly with given props & with no SearchGifCard 1`] = `
+<Grid
+  centered={true}
+  columns={2}
+  stackable={true}
+>
+  <GridRow />
+  <GridColumn>
+    <SearchGifsForm
+      submit={[Function]}
+    />
+  </GridColumn>
+  <GridRow
+    centered={true}
+  >
+    <CardGroup
+      itemsPerRow={4}
+      stackable={true}
+    />
+  </GridRow>
+</Grid>
+`;

@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FavoritesPage should render FavoritesPage correctly with given props 1`] = `
+<CardGroup
+  itemsPerRow={4}
+  stackable={true}
+/>
+`;

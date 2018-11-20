@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchGifsForm should render input form correctly with given function 1`] = `
+<Form
+  as="form"
+  id="searchForm"
+  loading={false}
+  onSubmit={[Function]}
+>
+  <FormGroup
+    inline={true}
+  >
+    <FormField
+      error={false}
+      id="formField"
+    >
+      <input
+        id="search"
+        name="search"
+        onChange={[Function]}
+        placeholder="Search for GIFs"
+        type="text"
+        value=""
+      />
+    </FormField>
+    <Button
+      as="button"
+      id="searchButton"
+      role="button"
+    >
+      Search
+    </Button>
+  </FormGroup>
+</Form>
+`;

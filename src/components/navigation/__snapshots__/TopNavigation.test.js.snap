@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render TopNavigation correctly with given strings 1`] = `
+<Menu
+  id="topNav"
+  inverted={true}
+  items={
+    Array [
+      Object {
+        "as": [Function],
+        "id": "homeLink",
+        "key": "home",
+        "name": "Home",
+        "to": "/",
+      },
+      Object {
+        "as": [Function],
+        "id": "favoriteLink",
+        "key": "favorites",
+        "name": "favorites",
+        "to": "/favorite",
+      },
+    ]
+  }
+  size="large"
+/>
+`;

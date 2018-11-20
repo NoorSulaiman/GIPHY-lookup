@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchGifCard should render SearchGifCard correctly with given props 1`] = `
+<Card
+  id="gifcard"
+  onClick={[Function]}
+>
+  <img
+    alt="title"
+    src="url"
+  />
+  <Icon
+    as="i"
+    id="favIcon"
+    name="favorite"
+    size="large"
+  />
+  <CardContent>
+    <CardHeader>
+      title
+    </CardHeader>
+  </CardContent>
+</Card>
+`;

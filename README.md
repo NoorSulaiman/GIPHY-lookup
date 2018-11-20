@@ -1,44 +1,45 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Giphy Lookup
 
-## Available Scripts
+This app is perfect for people who loves GIF images, it provides a quick lookup on Giphy api and save the ones you liked!
 
-In the project directory, you can run:
+## Getting Started
 
-### `npm start`
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Prerequisites
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+You need to have node version ^10.12.0 and npm version ^6.4.1 to be able to run this application. check if you have them already installed and what version you have by
+running the below code in your terminal
 
-### `npm test`
+```
+$node -v
+$npm -v
+```
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Installing
 
-### `npm run build`
+1- Dwonload the zip file or clone it into a directory by using the clone link from this github repo.
+2- cd to the application directory and run 
+```$ npm install ``` 
+to install all required node modules.
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3- After installation process run 
+```$ npm start``` 
+in your terminal to start the development server, the server will run on http://localhost:3000/, a Google Chrome page should pupup if not, you can open the local host link in a new tab.
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Running the tests
 
-### `npm run eject`
+Run ```$ npm run test``` in the application directory, make sure you close the development server before running the test.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Built With
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+* [react] - UI framework.
+* [redux] - Data Management.
+* [react-router] - client side routing.
+* [axios] - Fetching data.
+* [redux-thunk] - Redux async actions.
+* [prop-types] - Better type safety
+* [semantic-ui-react] - Better sane defaults in CSS and HTML.
+* [jest/enzyme] - Testing.

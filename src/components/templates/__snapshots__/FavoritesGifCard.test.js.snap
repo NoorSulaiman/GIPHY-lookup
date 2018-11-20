@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render FavoritesGifCard correctly with given props 1`] = `
+<Card
+  id="favgifcard"
+>
+  <img
+    alt="title"
+    src="url"
+  />
+  <Icon
+    as="a"
+    id="deleteIcon"
+    onClick={[Function]}
+  >
+    <Icon
+      as="i"
+      id="delIcon"
+      name="close"
+      size="large"
+    />
+    <span
+      id="tooltipdelete"
+    >
+      Delete!
+    </span>
+  </Icon>
+  <CardContent>
+    <CardHeader>
+      title
+    </CardHeader>
+  </CardContent>
+</Card>
+`;

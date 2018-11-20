@@ -5,8 +5,7 @@ import './FavoritesGifCard.css';
 
 const FavoritesGifCard = ({ title, imgUrl, id, removeFunc }) => (
     <Card id='favgifcard'>
-        <img alt="gifImage" src={imgUrl} />
-        {/* todo: switch to button */}
+        <img alt={`${title}`} src={imgUrl} />
         <Icon as='a' id='deleteIcon' onClick={() => removeFunc(id)}>
             <Icon size='large' name='close' id='delIcon' />
             <span id="tooltipdelete">Delete!</span>
@@ -23,7 +22,7 @@ FavoritesGifCard.propTypes = {
     title: PropTypes.string.isRequired,
     imgUrl: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
-    removeFunc: PropTypes.func.isRequired
-}
+    removeFunc: PropTypes.func.isRequired,
+};
 
 export default FavoritesGifCard;

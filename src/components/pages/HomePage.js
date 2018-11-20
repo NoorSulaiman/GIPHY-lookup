@@ -11,7 +11,7 @@ import './HomePage.css';
 
 
 
-const HomePage = (props) => {
+export const HomePage = (props) => {
     const submit = query => props.searchGifs(query);
     const clearSearchResults = () => props.clearSearch();
     const toggleFavorite = (data) => {
@@ -23,7 +23,6 @@ const HomePage = (props) => {
     };
     const results = props.searchResult;
     const errors = props.searchError;
-
     return (
         <Grid centered stackable columns={2}>
             <Grid.Row />
@@ -41,7 +40,7 @@ const HomePage = (props) => {
             </Grid.Row>}
             <Grid.Row centered>
                 <Card.Group stackable itemsPerRow={4}>
-                    {results && results.map(gif =>
+                    {results.length > 0 && results.map(gif =>
                         <SearchGifCard
                             key={gif.id}
                             id={gif.id}
@@ -49,11 +48,11 @@ const HomePage = (props) => {
                             title={gif.title}
                             imgUrl={gif.imgUrl}
                             isFave={gif.isFave}
-                        />
+                        />,
                     )}
                 </Card.Group>
-                {!results[0] && errors.length === 2 && <Message>No search results found!</Message>}
-                {errors.length > 3 && <Message negative>{errors}</Message>}
+                {!results[0] && errors === "No results" && <Message size='big'>No search results found!</Message>}
+                {errors.length > 12 && <Message size='big' negative>{errors}</Message>}
             </Grid.Row>
         </Grid>
     );

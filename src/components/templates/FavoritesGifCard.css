@@ -15,12 +15,7 @@
 #downloadIcon:hover{
     background-color:rgb(46, 45, 45); 
 }
-#deleteIcon:active{
-    transform: scale(0.8,0.8) translateY(2px) 
-}
-#downloadIcon:active{
-    transform: scale(0.8,0.8) translateY(2px) 
-}
+
 #deleteIcon:hover #tooltipdelete{
     display: block;
 }
