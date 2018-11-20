@@ -9,10 +9,10 @@ const NavBar = () => (
             <Menu.Header id="giphylookup">
                 GIPHY Lookup
         </Menu.Header>
-            <Menu.Item as={Link} to="/">
+            <Menu.Item className="menuItem" as={Link} to="/">
                 Home
         </Menu.Item>
-            <Menu.Item as={Link} to="/favorites">
+            <Menu.Item className="menuItem" as={Link} to="/favorites">
                 Favorites
         </Menu.Item>
         </div>

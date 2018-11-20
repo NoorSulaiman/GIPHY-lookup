@@ -6,10 +6,20 @@ import { searchGifs, clearSearch } from '../../actions/search';
 import { addToFavorites, removeFromFavorites } from '../../actions/favorite';
 import SearchGifsForm from '../forms/SearchGifsForm';
 import SearchGifCard from '../templates/SearchGifCard';
+import PaginationAddon from '../addons/PaginationAddon';
 import './HomePage.css';
 
+let searchQuery = ''
 export const HomePage = (props) => {
-    const submit = query => props.searchGifs(query);
+    const submit = query => {
+        searchQuery = query
+        return props.searchGifs(query);
+    }
+    const handlePageChange = (e, { activePage }) => {
+        e.preventDefault();
+        const offset = (activePage - 1) * 24
+        props.searchGifs(searchQuery, offset)
+    }
     const clearSearchResults = () => props.clearSearch();
     const toggleFavorite = (data) => {
         if (!data.isFave) {
@@ -20,21 +30,24 @@ export const HomePage = (props) => {
     };
     const results = props.searchResult;
     const errors = props.searchError;
+    const paginationPages = Math.floor(props.pagination / 24);
     return (
-        <Grid centered stackable columns={2}>
+        < Grid centered stackable columns={2} >
             <Grid.Row />
             <Grid.Column>
                 <SearchGifsForm submit={submit} />
             </Grid.Column>
-            {results && results.length > 1 && <Grid.Row centered columns={1}>
-                <Divider />
-                <Grid.Column >
-                    <Button id="clearSearch" size='small' floated='right' onClick={clearSearchResults}>
-                        <Icon name='times' />
-                        Clear Search
+            {
+                results && results.length > 1 && <Grid.Row centered columns={1}>
+                    <Divider />
+                    <Grid.Column >
+                        <Button id="clearSearch" size='small' floated='right' onClick={clearSearchResults}>
+                            <Icon name='times' />
+                            Clear Search
                         </Button>
-                </Grid.Column>
-            </Grid.Row>}
+                    </Grid.Column>
+                </Grid.Row>
+            }
             <Grid.Row centered>
                 <Card.Group stackable itemsPerRow={4}>
                     {results.length > 0 && results.map(gif =>
@@ -49,9 +62,18 @@ export const HomePage = (props) => {
                     )}
                 </Card.Group>
                 {!results[0] && errors.isNoResults && <Message size='big'>No search results found!</Message>}
-                {errors.length > 12 && <Message size='big' negative>{errors}</Message>}
+                {errors.isNoConnection && < Message size='big' negative>Server is not responding, try again later!</Message>}
             </Grid.Row>
-        </Grid>
+            <Grid.Row>
+                {paginationPages > 1 &&
+                    <PaginationAddon
+                        key={searchQuery}
+                        pages={paginationPages}
+                        handlePageChange={handlePageChange}
+                    />
+                }
+            </Grid.Row>
+        </Grid >
     );
 }
 
@@ -63,16 +85,21 @@ HomePage.propTypes = {
         imgUrl: PropTypes.string.isRequired,
         isFave: PropTypes.bool.isRequired,
     }).isRequired).isRequired,
-    searchError: PropTypes.string.isRequired,
+    searchError: PropTypes.objectOf(PropTypes.shape({
+        isNoResults: PropTypes.bool.isRequired,
+        isNoConnection: PropTypes.bool.isRequired,
+    }).isRequired).isRequired,
     clearSearch: PropTypes.func.isRequired,
     addToFavorites: PropTypes.func.isRequired,
     removeFromFavorites: PropTypes.func.isRequired,
+    pagination: PropTypes.number.isRequired,
 };
 
 function mapStateToProps(state) {
     return {
         searchResult: state.search.searchResult,
         searchError: state.search.searchError,
+        pagination: state.search.pagination,
     };
 };
 

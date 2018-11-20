@@ -40,7 +40,7 @@
     margin: auto 0px auto 0%;
 }
 
-.ui.menu a.item{
+.ui.menu a.menuItem{
     color: rgb(197, 194, 194);
     font-size: 1.2em;
     position: relative;
@@ -49,16 +49,16 @@
     transition: all .2s;
     text-decoration: none;
 }
-.ui.menu a.item:before {
+.ui.menu a.menuItem:before {
     content: none;
     
 }
-.ui.menu a.item:hover{
+.ui.menu a.menuItem:hover{
 background-color:transparent;
 color: #fff;
 }
 
-.ui.menu a.item::after{
+.ui.menu a.menuItem::after{
     content: "";
     display: block;
     bottom: 0;
@@ -70,6 +70,7 @@ color: #fff;
     transition: all 0.2s;
     position: absolute;
 }
-.ui.menu a.item:hover::after{
+
+.ui.menu a.menuItem:hover::after{
     width:100%;
 }
