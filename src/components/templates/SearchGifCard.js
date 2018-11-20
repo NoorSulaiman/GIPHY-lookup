@@ -5,7 +5,7 @@ import './SearchGifCard.css';
 
 const GifCard = ({ title, imgUrl, toggleFavorite, id, isFave }) => (
     <Card id='gifcard' onClick={() => toggleFavorite({ title, imgUrl, id, isFave })}>
-        <img alt={`${title}`} src={imgUrl} />
+        <img alt={title} src={imgUrl} />
         {
             isFave ?
                 <Icon size='large' id='favIcon' name='favorite' className='favActive' />
@@ -16,8 +16,6 @@ const GifCard = ({ title, imgUrl, toggleFavorite, id, isFave }) => (
         </Card.Content>
     </Card >
 );
-
-
 
 GifCard.propTypes = {
     title: PropTypes.string.isRequired,

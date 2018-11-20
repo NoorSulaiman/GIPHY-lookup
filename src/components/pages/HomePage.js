@@ -8,9 +8,6 @@ import SearchGifsForm from '../forms/SearchGifsForm';
 import SearchGifCard from '../templates/SearchGifCard';
 import './HomePage.css';
 
-
-
-
 export const HomePage = (props) => {
     const submit = query => props.searchGifs(query);
     const clearSearchResults = () => props.clearSearch();
@@ -32,7 +29,7 @@ export const HomePage = (props) => {
             {results && results.length > 1 && <Grid.Row centered columns={1}>
                 <Divider />
                 <Grid.Column >
-                    <Button size='small' floated='right' onClick={clearSearchResults}>
+                    <Button id="clearSearch" size='small' floated='right' onClick={clearSearchResults}>
                         <Icon name='times' />
                         Clear Search
                         </Button>
@@ -51,13 +48,12 @@ export const HomePage = (props) => {
                         />,
                     )}
                 </Card.Group>
-                {!results[0] && errors === "No results" && <Message size='big'>No search results found!</Message>}
+                {!results[0] && errors.isNoResults && <Message size='big'>No search results found!</Message>}
                 {errors.length > 12 && <Message size='big' negative>{errors}</Message>}
             </Grid.Row>
         </Grid>
     );
 }
-
 
 HomePage.propTypes = {
     searchGifs: PropTypes.func.isRequired,

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should render TopNavigation correctly with given strings 1`] = `
+exports[`should render NavBar correctly with given strings 1`] = `
 <Menu
   id="topNav"
   inverted={true}
@@ -17,8 +17,8 @@ exports[`should render TopNavigation correctly with given strings 1`] = `
         "as": [Function],
         "id": "favoriteLink",
         "key": "favorites",
-        "name": "favorites",
-        "to": "/favorite",
+        "name": "Favorites",
+        "to": "/favorites",
       },
     ]
   }

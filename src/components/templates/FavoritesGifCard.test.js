@@ -14,5 +14,4 @@ it('should render FavoritesGifCard correctly with given props', () => {
         .find('#deleteIcon')
         .simulate('click');
     expect(clickFn).toHaveBeenCalled();
-
 });

@@ -2,3 +2,9 @@
     background-color: #cacbcd;
     cursor: default;
 }
+
+@media only screen and (max-width:786px){
+    #clearSearch{
+        margin-bottom: 2%;
+    }
+}

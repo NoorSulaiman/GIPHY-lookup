@@ -17,7 +17,7 @@ export default function gifsReducer(state = { favorites, search: { searchResult:
                 return { ...state, search: { searchResult: [], searchError: action.response } };
 
             } else if (action.response.length === 0) {
-                return { ...state, search: { searchResult: [], searchError: "No results" } };
+                return { ...state, search: { searchResult: [], searchError: { isNoResults: true } } };
             }
             return { ...state, search: { searchResult: finalSearchResults, searchError: ' ' } };
 
@@ -47,6 +47,7 @@ export default function gifsReducer(state = { favorites, search: { searchResult:
             });
             localStorage.setItem("favorites", JSON.stringify(newFavoritesRemove));
             return { ...state, favorites: newFavoritesRemove, search: { searchResult: newSearchRemove, searchError: ' ' } };
+
         default:
             return state;
     }

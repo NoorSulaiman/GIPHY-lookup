@@ -1,18 +1,17 @@
 #favgifcard{
     transition: transform .1s
 }
+
 #favgifcard:hover{
     transform: scale(1.2);
     z-index: 100;
 }
+
 #favgifcard:hover #deleteIcon{
     display: block;
 }
 
 #deleteIcon:hover{
-    background-color:rgb(46, 45, 45); 
-}
-#downloadIcon:hover{
     background-color:rgb(46, 45, 45); 
 }
 
@@ -24,24 +23,21 @@
     display: none;
 }
 
-
-
 #deleteIcon{
     padding: 3%;
     margin: 2%;
-	position:absolute;
-	right: 0;
-	top: 0;
+    position:absolute;
+    right: 0;
+    top: 0;
     display: none;
     color: white;
     background-color: rgba(107, 102, 102, 0.52);
     border-radius: 50%;
 }
+
 #delIcon{
     margin:0 auto;
 }
-
-
 
 #tooltipdelete{
     display: none;
@@ -52,4 +48,37 @@
     border-radius: 6px;
     position: absolute;
     z-index: 110;
+}
+
+@media only screen and (max-width:786px){
+    img{
+        width:100%;
+        max-width: 100%;
+        overflow: hidden;
+        position: relative;
+        margin: 0 auto;
+    }
+    #favgifcard{
+        transition: none
+    }
+    #favgifcard:hover{
+        transform: none;
+        z-index: unset;
+    }
+    #favgifcard:active {
+        transform: scale(0.9,0.9) translateY(2px)
+    }
+    #deleteIcon{
+    margin: 1% auto;
+    width:11.5%;
+    padding: 3%;
+    position: unset;;
+    display: block;
+    color: white;
+    background-color:rgb(46, 45, 45); 
+    border-radius: 50%;
+    }
+    #deleteIcon:hover{
+        
+    }
 }

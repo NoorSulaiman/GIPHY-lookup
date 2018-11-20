@@ -84,7 +84,7 @@ describe('gifs reducer', () => {
                     response: []
                 })
             ).toEqual({
-                favorites: mockFavData, search: { searchResult: [], searchError: 'No results' }
+                favorites: mockFavData, search: { searchResult: [], searchError: { isNoResults: true } }
             });
         });
 
