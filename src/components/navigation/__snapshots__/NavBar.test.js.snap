@@ -3,25 +3,30 @@
 exports[`should render NavBar correctly with given strings 1`] = `
 <Menu
   id="topNav"
-  inverted={true}
-  items={
-    Array [
-      Object {
-        "as": [Function],
-        "id": "homeLink",
-        "key": "home",
-        "name": "Home",
-        "to": "/",
-      },
-      Object {
-        "as": [Function],
-        "id": "favoriteLink",
-        "key": "favorites",
-        "name": "Favorites",
-        "to": "/favorites",
-      },
-    ]
-  }
   size="large"
-/>
+>
+  <div
+    id="navLinksContainer"
+  >
+    <MenuHeader
+      id="giphylookup"
+    >
+      GIPHY Lookup
+    </MenuHeader>
+    <MenuItem
+      as={[Function]}
+      className="menuItem"
+      to="/"
+    >
+      Home
+    </MenuItem>
+    <MenuItem
+      as={[Function]}
+      className="menuItem"
+      to="/favorites"
+    >
+      Favorites
+    </MenuItem>
+  </div>
+</Menu>
 `;
