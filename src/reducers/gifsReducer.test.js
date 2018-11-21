@@ -1,7 +1,8 @@
 import gifsReducer from './gifsReducer';
 import * as types from '../types'
 
-const mockSearchData = [
+const mockSearchData ={ 
+    data:[
     {
         id: 'gif1',
         title: 'title',
@@ -23,7 +24,10 @@ const mockSearchData = [
             }
         },
     }
-];
+],
+pagination:{total_count:1000},
+}
+
 const finalSearch = [{
     id: 'gif1',
     title: 'title',
@@ -35,6 +39,7 @@ const finalSearch = [{
     imgUrl: 'url',
     isFave: false
 }]
+
 const mockFavData = {
     'gif1': {
         id: 'gif1',
@@ -50,7 +55,7 @@ describe('gifs reducer', () => {
         expect(
             gifsReducer(undefined, {})
         ).toEqual({
-            favorites: {}, search: { searchResult: [], searchError: ' ' }
+            favorites: {}, search: { searchResult: [], searchError: {}, pagination: 0 }
         });
     });
     describe('USER_SEARCHED action', () => {
@@ -58,9 +63,9 @@ describe('gifs reducer', () => {
             expect(
                 gifsReducer({ favorites: mockFavData }, {
                     type: types.USER_SEARCHED,
-                    response: 'Error'
+                    response: {data:[],error:'server down'}
                 })
-            ).toEqual({ favorites: mockFavData, search: { searchResult: [], searchError: 'Error' } });
+            ).toEqual({ favorites: mockFavData, search: { searchResult: [], searchError: {isNoConnection: true}, pagination: 0 } });
         });
         it('should return a searchResult if response is not empty array', () => {
             expect(
@@ -73,18 +78,19 @@ describe('gifs reducer', () => {
                     favorites: mockFavData,
                     search: {
                         searchResult: [{ ...finalSearch[0], isFave: true }, finalSearch[1]],
-                        searchError: ' '
-                    }
+                        searchError: {},
+                         pagination: 1000,
+                    },
                 });
         })
         it('should return a searchError if response is empty array', () => {
             expect(
                 gifsReducer({ favorites: mockFavData }, {
                     type: types.USER_SEARCHED,
-                    response: []
+                    response: {data:[]}
                 })
             ).toEqual({
-                favorites: mockFavData, search: { searchResult: [], searchError: { isNoResults: true } }
+                favorites: mockFavData, search: { searchResult: [], searchError: { isNoResults: true }, pagination: 0 }
             });
         });
 
@@ -97,7 +103,7 @@ describe('gifs reducer', () => {
                     type: types.SEARCH_CLEARED,
                 })
             ).toEqual({
-                favorites: mockFavData, search: { searchResult: [], searchError: ' ' }
+                favorites: mockFavData, search: { searchResult: [], searchError: {}, pagination: 0 }
             });
         });
     });
@@ -110,7 +116,8 @@ describe('gifs reducer', () => {
                         favorites: {},
                         search: {
                             searchResult: finalSearch,
-                            searchError: ' ',
+                            searchError: {},
+                            pagination: 1000,
                         },
                     },
                     {
@@ -121,7 +128,8 @@ describe('gifs reducer', () => {
                 favorites: mockFavData,
                 search: {
                     searchResult: [{ ...finalSearch[0], isFave: true }, finalSearch[1]],
-                    searchError: ' ',
+                    searchError: {}, 
+                    pagination: 1000,
                 },
             });
         });
@@ -134,7 +142,8 @@ describe('gifs reducer', () => {
                         favorites: mockFavData,
                         search: {
                             searchResult: [{ ...finalSearch[0], isFave: true }, finalSearch[1]],
-                            searchError: ' ',
+                            searchError: {}, 
+                            pagination: 1000,
                         },
                     },
                     {
@@ -145,7 +154,8 @@ describe('gifs reducer', () => {
                 favorites: {},
                 search: {
                     searchResult: finalSearch,
-                    searchError: ' ',
+                    searchError: {}, 
+                    pagination: 1000,
                 },
             });
         });

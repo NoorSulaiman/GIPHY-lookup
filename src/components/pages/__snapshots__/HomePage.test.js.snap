@@ -20,5 +20,6 @@ exports[`should render HomePage correctly with given props & with no SearchGifCa
       stackable={true}
     />
   </GridRow>
+  <GridRow />
 </Grid>
 `;

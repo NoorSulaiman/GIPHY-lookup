@@ -8,10 +8,11 @@ it('should render HomePage correctly with given props & with no SearchGifCard', 
     const component = shallow(<HomePage
         searchGifs={clickFn}
         searchResult={[]}
-        searchError={' '}
+        searchError={{}}
         clearSearch={clickFn}
         addToFavorites={clickFn}
-        removeFromFavorites={clickFn} />);
+        removeFromFavorites={clickFn}
+        pagination={0} />);
     expect(component).toMatchSnapshot();
     expect(component.find('SearchGifsForm').length).toBe(1);
     expect(component.find('SearchGifCard').length).toBe(0);

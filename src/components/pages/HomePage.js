@@ -65,7 +65,14 @@ export const HomePage = (props) => {
                 {errors.isNoConnection && < Message size='big' negative>Server is not responding, try again later!</Message>}
             </Grid.Row>
             <Grid.Row>
-                {paginationPages > 1 &&
+                {paginationPages > 10 &&
+                    <PaginationAddon
+                        key={searchQuery}
+                        pages={10}
+                        handlePageChange={handlePageChange}
+                    />
+                }
+                {paginationPages < 10 && paginationPages > 1 &&
                     <PaginationAddon
                         key={searchQuery}
                         pages={paginationPages}
